@@ -20,6 +20,42 @@ import uk.ac.manchester.tornado.api.TornadoExecutionPlan;
 import uk.ac.manchester.tornado.api.annotations.Parallel;
 import uk.ac.manchester.tornado.api.enums.DataTransferMode;
 
+import java.time.LocalDate;
+
+import com.google.common.collect.ImmutableMap;
+import com.opengamma.strata.basics.ReferenceData;
+import com.opengamma.strata.basics.currency.CurrencyAmount;
+import com.opengamma.strata.basics.currency.Payment;
+import com.opengamma.strata.basics.date.*;
+import com.opengamma.strata.basics.schedule.*;
+import com.opengamma.strata.collect.array.DoubleArray;
+import com.opengamma.strata.collect.tuple.Pair;
+import com.opengamma.strata.market.curve.CurveMetadata;
+import com.opengamma.strata.market.curve.CurveName;
+import com.opengamma.strata.market.curve.Curves;
+import com.opengamma.strata.market.curve.InterpolatedNodalCurve;
+import com.opengamma.strata.market.curve.LegalEntityGroup;
+import com.opengamma.strata.market.curve.RepoGroup;
+import com.opengamma.strata.market.curve.interpolator.CurveInterpolator;
+import com.opengamma.strata.market.curve.interpolator.CurveInterpolators;
+import com.opengamma.strata.pricer.DiscountFactors;
+import com.opengamma.strata.pricer.DiscountingPaymentPricer;
+import com.opengamma.strata.pricer.ZeroRateDiscountFactors;
+import com.opengamma.strata.pricer.bond.DiscountingFixedCouponBondProductPricer;
+import com.opengamma.strata.pricer.bond.DiscountingFixedCouponBondTradePricer;
+import com.opengamma.strata.pricer.bond.ImmutableLegalEntityDiscountingProvider;
+import com.opengamma.strata.pricer.bond.LegalEntityDiscountingProvider;
+import com.opengamma.strata.product.*;
+import com.opengamma.strata.product.bond.FixedCouponBond;
+import com.opengamma.strata.product.bond.FixedCouponBondYieldConvention;
+import com.opengamma.strata.product.bond.ResolvedFixedCouponBond;
+import com.opengamma.strata.product.bond.ResolvedFixedCouponBondSettlement;
+import com.opengamma.strata.product.bond.ResolvedFixedCouponBondTrade;
+
+import static com.opengamma.strata.basics.currency.Currency.EUR;
+import static com.opengamma.strata.basics.date.DayCounts.ACT_365F;
+
+
 /**
  * Simple example to show how to program and how to invoke TornadoVM kernels to run on a hardware accelerator.
  *
