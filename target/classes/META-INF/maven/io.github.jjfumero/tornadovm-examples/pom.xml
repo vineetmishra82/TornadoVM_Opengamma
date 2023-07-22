@@ -56,6 +56,11 @@
   <artifactId>strata-measure</artifactId>
   <version>2.12.27</version>
    </dependency>
+   <dependency>
+    <groupId>com.opengamma.strata</groupId>
+    <artifactId>strata-market</artifactId>
+    <version>2.12.27</version>
+</dependency>
   </dependencies>
 
     <build>
