@@ -85,6 +85,8 @@ public class HelloTornado {
 
     public static void main( String[] args ) {
     	System.out.println("in hello tornadovm main method");
+    	System.out.println("Creating Product class");
+    	Product product = new Product();
         float[] array = new float[512];
         TaskGraph taskGraph = new TaskGraph("s0")
                 .transferToDevice(DataTransferMode.EVERY_EXECUTION, array)
