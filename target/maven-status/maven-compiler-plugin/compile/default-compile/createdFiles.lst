@@ -9,5 +9,6 @@ io\github\jjfumero\taskmigration\Server.class
 io\github\jjfumero\Mandelbrot$Benchmark.class
 io\github\jjfumero\KMeans.class
 io\github\jjfumero\HelloTornado.class
+io\github\jjfumero\Product.class
 io\github\jjfumero\BlurFilter.class
 io\github\jjfumero\common\Options$Implementation.class
