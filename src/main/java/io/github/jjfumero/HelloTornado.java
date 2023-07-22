@@ -74,7 +74,7 @@ import uk.ac.manchester.tornado.api.enums.DataTransferMode;
 public class HelloTornado {
 
     public static void parallelInitialization(float[] data) {
-    	System.out.println("In parallel init");
+    	
         for (@Parallel int i = 0; i < data.length; i++) {
             data[i] = i;
         }
@@ -99,5 +99,7 @@ public class HelloTornado {
 
         TornadoExecutionPlan executionPlan = new TornadoExecutionPlan(taskGraph.snapshot());
         executionPlan.execute();
+        
+        System.out.println("Exiting class");
     }
 }
